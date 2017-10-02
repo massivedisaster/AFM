@@ -1,6 +1,5 @@
 /*
  * AFM - A library to help android developer working easily with activities and fragments.
- *       (Kotlin Version)
  *
  * Copyright (c) 2017 AFM
  *
@@ -18,7 +17,7 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -39,9 +38,8 @@ import com.massivedisaster.afm.activity.BaseActivity
 import kotlin.reflect.KClass
 
 /**
- *
+ * ActivityCall class allow open activity
  */
-
 class ActivityCall private constructor() : Builder() {
 
     private val DEFAULT_FLAGS = 0x0
@@ -116,6 +114,18 @@ class ActivityCall private constructor() : Builder() {
         this.context = context
         fragment ?: return
         this.fragment = fragment
+    }
+
+    /**
+     * Initializes an instance of ActivityCall retrieving all necessary fields to be able to at least
+     * instantiate an activity with a container fragment and a given fragment (This fragment may be used
+     * to retrieve context to use with shared elements and start activity for result)
+     */
+    private fun init(baseActivity: BaseActivity, activity: Class<out BaseActivity>, fragmentClass: Class<out Fragment>) {
+        this.activityClass = activity
+        this.fragmentClass = fragmentClass
+        this.context = baseActivity.baseContext
+        this.activity = baseActivity
     }
 
     /**
