@@ -23,41 +23,37 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.massivedisaster.afm.animation
+package com.massivedisaster.afm.sample.feature.backpressed
 
-import android.support.annotation.AnimRes
+import android.widget.TextView
+import com.massivedisaster.adal.fragment.BaseFragment
+import com.massivedisaster.afm.fragment.OnBackPressedListener
+import com.massivedisaster.afm.sample.R
 
-interface TransactionAnimation {
+class FragmentOnBackPressed : BaseFragment(), OnBackPressedListener {
 
-    /**
-     * Gets the entering animation.
+    private var mNumberOfBacks: Int = 0
+    private lateinit var mTxtCount: TextView
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationEnter: Int
+    override fun layoutToInflate(): Int {
+        return R.layout.fragment_onbackpressed
+    }
 
-    /**
-     * Gets the exiting animation.
+    override fun doOnCreated() {
+        activity.setTitle(R.string.fragment_onbackpressed)
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationExit: Int
+        mTxtCount = findViewById(R.id.txtCount)
 
-    /**
-     * Gets the pop entering animation.
+        mTxtCount.text = getString(R.string.number_of_counts, 0)
+    }
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopEnter: Int
-
-    /**
-     * Gets the pop exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopExit: Int
+    override fun onBackPressed(): Boolean {
+        return if (mNumberOfBacks < 5) {
+            mNumberOfBacks++
+            mTxtCount.text = getString(R.string.number_of_counts, mNumberOfBacks)
+            true
+        } else {
+            false
+        }
+    }
 }

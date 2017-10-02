@@ -23,41 +23,36 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.massivedisaster.afm.animation
+package com.massivedisaster.afm.sample.activity
 
-import android.support.annotation.AnimRes
+import android.os.Bundle
+import android.view.MenuItem
+import com.massivedisaster.afm.activity.BaseActivity
+import com.massivedisaster.afm.sample.R
 
-interface TransactionAnimation {
+open class ActivityToolbar : BaseActivity() {
 
-    /**
-     * Gets the entering animation.
+    override fun layoutToInflate(): Int {
+        return R.layout.activity_primary
+    }
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationEnter: Int
+    override fun getContainerViewId(): Int {
+        return R.id.frmContainer
+    }
 
-    /**
-     * Gets the exiting animation.
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationExit: Int
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
-    /**
-     * Gets the pop entering animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopEnter: Int
-
-    /**
-     * Gets the pop exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopExit: Int
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }

@@ -23,41 +23,32 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.massivedisaster.afm.animation
+package com.massivedisaster.afm.sample.feature.splash
 
-import android.support.annotation.AnimRes
+import android.app.Activity
+import com.massivedisaster.adal.fragment.AbstractSplashFragment
+import com.massivedisaster.afm.ActivityCall
+import com.massivedisaster.afm.sample.R
+import com.massivedisaster.afm.sample.activity.ActivityHome
+import com.massivedisaster.afm.sample.feature.home.FragmentHome
 
-interface TransactionAnimation {
+class FragmentSplash : AbstractSplashFragment() {
 
-    /**
-     * Gets the entering animation.
+    override fun layoutToInflate(): Int {
+        return R.layout.fragment_splash
+    }
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationEnter: Int
-
-    /**
-     * Gets the exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationExit: Int
+    override fun onSplashStarted() {
+        onSplashFinish { openHomeScreen(activity) }
+    }
 
     /**
-     * Gets the pop entering animation.
-
-     * @return the animation.
+     * Open the home screen
+     *
+     * @param activity The actual activity.
      */
-    @get:AnimRes
-    val animationPopEnter: Int
-
-    /**
-     * Gets the pop exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopExit: Int
+    private fun openHomeScreen(activity: Activity) {
+        ActivityCall.init(activity, ActivityHome::class, FragmentHome::class).build()
+        activity.finish()
+    }
 }

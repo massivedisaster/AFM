@@ -23,41 +23,30 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.massivedisaster.afm.animation
+package com.massivedisaster.afm.sample.feature.sharedelements
 
-import android.support.annotation.AnimRes
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.massivedisaster.adal.adapter.AbstractLoadMoreBaseAdapter
+import com.massivedisaster.adal.adapter.BaseViewHolder
+import com.massivedisaster.afm.sample.R
 
-interface TransactionAnimation {
+internal class ImageAdapter
+/**
+ * Image Adapter constructor
+ *
+ * @param lstItems List of items to populate adapter
+ */
+(lstItems: List<Int>) : AbstractLoadMoreBaseAdapter<Int>(R.layout.adapter_image, lstItems) {
 
-    /**
-     * Gets the entering animation.
+    override fun bindItem(holder: BaseViewHolder, item: Int?) {
+        Glide.with(holder.itemView.context)
+                .load("http://lorempixel.com/400/200/nature/" + item!!)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .into(holder.getView(R.id.imgExample))
+    }
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationEnter: Int
-
-    /**
-     * Gets the exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationExit: Int
-
-    /**
-     * Gets the pop entering animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopEnter: Int
-
-    /**
-     * Gets the pop exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopExit: Int
+    override fun bindError(holder: BaseViewHolder?, loadingError: Boolean) {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }
