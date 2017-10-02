@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 26
@@ -32,3 +33,17 @@ android {
 }
 
 apply from: 'dependencies.gradle'
+
+publish {
+    userOrg = userOrgBase
+    groupId = packageBase
+    artifactId = 'afm'
+    publishVersion = libraryVersionString()
+    desc = 'An Library to help android developers working easly with activities and fragments (Kotlin version)'
+    website = websiteBase
+    licences = licensesBase
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
