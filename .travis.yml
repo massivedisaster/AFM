@@ -11,12 +11,14 @@ install:
   - echo y | android update sdk -u -a -t extra-google-m2repository
   - echo y | android update sdk -u -a -t extra-android-m2repository
 
-script:
-  - ./gradlew clean testDebug lintDebug jacocoDebugReport coveralls -Dscan --configure-on-demand --parallel --stacktrace
-
 branches:
-  except:
-    - gh-pages
+ only:
+ - master
+ - develop
+ - travis
+
+script:
+  - ./gradlew clean build
 
 sudo: false
 
