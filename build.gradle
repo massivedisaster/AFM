@@ -1,14 +1,32 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+ext {
+    userOrgBase = 'massivedisaster'
+    websiteBase = 'https://github.com/massivedisaster/AFM'
+    licensesBase = ['MIT']
+    packageBase = 'com.massivedisaster'
+    isLibrary = true
+    libraryVersionCode = 1
+    libraryVersionName = project.libraryVersionName
+    librarySnaphotEnabled = false
+
+    libraryVersionString = {
+        return libraryVersionName + (librarySnaphotEnabled ? '-SNAPSHOT' : '')
+    }
+}
+
 buildscript {
     ext.kotlin_version = '1.1.51'
+
     repositories {
         google()
         jcenter()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0-beta6'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.novoda:bintray-release:0.5.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -21,8 +39,22 @@ allprojects {
         jcenter()
         mavenCentral()
     }
+
+    tasks.withType(Javadoc) {
+        excludes = ['**/*.kt']
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+task version {
+    println "Current version: " + libraryVersionString()
+}
+
+task updateReadme() {
+    doLast {
+        processUpdateReadme file("$project.rootDir"), ".md", libraryVersionName
+    }
 }
