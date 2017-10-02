@@ -1,7 +1,7 @@
-package com.massivedisaster.afm
+package com.massivedisaster.afm.sample
 
 import com.massivedisaster.afm.activity.DataBindingBaseActivity
-import com.massivedisaster.afm.databinding.ActivitySecondaryBinding
+import com.massivedisaster.afm.sample.databinding.ActivitySecondaryBinding
 
 class BindingActivity : DataBindingBaseActivity<ActivitySecondaryBinding>() {
 

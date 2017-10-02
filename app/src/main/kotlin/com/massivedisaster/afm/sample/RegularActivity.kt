@@ -1,4 +1,4 @@
-package com.massivedisaster.afm
+package com.massivedisaster.afm.sample
 
 import com.massivedisaster.afm.activity.BaseActivity
 
