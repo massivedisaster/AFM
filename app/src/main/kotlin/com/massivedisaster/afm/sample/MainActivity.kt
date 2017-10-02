@@ -1,4 +1,4 @@
-package com.massivedisaster.afm
+package com.massivedisaster.afm.sample
 
 import android.support.v4.app.Fragment
 import com.massivedisaster.afm.activity.BaseActivity

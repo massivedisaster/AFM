@@ -1,4 +1,4 @@
-package com.massivedisaster.afm
+package com.massivedisaster.afm.sample
 
 import android.content.Context
 import android.databinding.DataBindingUtil

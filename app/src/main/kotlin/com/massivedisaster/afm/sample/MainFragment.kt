@@ -1,6 +1,7 @@
-package com.massivedisaster.afm
+package com.massivedisaster.afm.sample
 
-import com.massivedisaster.afm.databinding.FragmentMainBinding
+import com.massivedisaster.afm.ActivityCall
+import com.massivedisaster.afm.sample.databinding.FragmentMainBinding
 
 class MainFragment : BaseFragment<FragmentMainBinding>() {
 
@@ -10,14 +11,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     override fun defineViews() {
         dataBinding.btnActionOpenRegular.setOnClickListener {
-            ActivityCall
-                    .init(BaseFragment@this, RegularActivity::class, FirstFragment::class)
+            ActivityCall.init(BaseFragment@ this, RegularActivity::class, FirstFragment::class)
                     .build()
         }
 
         dataBinding.btnActionOpenBinding.setOnClickListener {
-            ActivityCall
-                    .init(BaseFragment@this, BindingActivity::class, FirstFragment::class)
+            ActivityCall.init(BaseFragment@ this, BindingActivity::class, FirstFragment::class)
                     .build()
         }
     }

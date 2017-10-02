@@ -1,6 +1,6 @@
-package com.massivedisaster.afm
+package com.massivedisaster.afm.sample
 
-import com.massivedisaster.afm.databinding.FragmentSecondBinding
+import com.massivedisaster.afm.sample.databinding.FragmentSecondBinding
 
 class SecondFragment : BaseFragment<FragmentSecondBinding>() {
 
