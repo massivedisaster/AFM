@@ -10,7 +10,7 @@ An library to help android developer working easly with activities and fragments
 
 * Accelerate the process and abstract the logic of opening, adding and replacing fragments in an activity;
 * Reduce the number of activities declared in the project;
-* Get access to ```Activity.onBackPressed()``` inside of the fragments.
+* Get access to ```Activity::onBackPressed()``` inside of the fragments.
 * Add animated transitions between fragments in an easy way;
 * Easy way to work with shared elements;
 
@@ -81,19 +81,19 @@ Create the layout to be used by your ```AbstractFragmentActivity```.
 
 #### Open a new AbstractFragmentActivity with a fragment.
 ```Kotlin
-ActivityCall.init(context, ActivityPrimaryTheme.class, FragmentExample.class)
+ActivityCall.init(context, ActivityPrimaryTheme::class, FragmentExample::class)
                 .build()
 ```
 
 #### Add a new Fragment in the actual AbstractFragmentActivity.
 ```Kotlin
-FragmentCall.init(activity, FragmentExample.class)
+FragmentCall.init(activity, FragmentExample::class)
                 .build()
 ```
 
 #### Replace a new Fragment in the actual AbstractFragmentActivity.
 ```Kotlin
-FragmentCall.init(activity as BaseActivity, FragmentExample.class)
+FragmentCall.init(activity as BaseActivity, FragmentExample::class)
                 .setTransitionType(FragmentCall.TransitionType.REPLACE)
                 .build()
 ```
