@@ -7,16 +7,13 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
 
-
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -35,9 +32,3 @@ android {
 }
 
 apply from: 'dependencies.gradle'
-repositories {
-    mavenCentral()
-}
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-}
