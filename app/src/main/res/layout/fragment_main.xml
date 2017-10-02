@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnActionOpenRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open_regular_activity"/>
+
+        <Button
+            android:id="@+id/btnActionOpenBinding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open_binding_activity"/>
+
+    </LinearLayout>
+
+</layout>

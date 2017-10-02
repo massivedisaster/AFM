@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AFM (Kotlin)</string>
+
+    <string name="open_regular_activity">Open a Regular Activity</string>
+    <string name="open_binding_activity">Open a Binding Activity</string>
+    <string name="add_another_fragment">Add another fragment</string>
+    <string name="replace_fragment">Replace fragment</string>
+    <string name="end_of_the_line">End of the line</string>
+</resources>
