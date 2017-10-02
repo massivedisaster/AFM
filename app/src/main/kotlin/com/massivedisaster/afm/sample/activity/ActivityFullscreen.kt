@@ -23,41 +23,24 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.massivedisaster.afm.animation
+package com.massivedisaster.afm.sample.activity
 
-import android.support.annotation.AnimRes
+import android.support.v4.app.Fragment
+import com.massivedisaster.afm.activity.BaseActivity
+import com.massivedisaster.afm.sample.R
+import com.massivedisaster.afm.sample.feature.splash.FragmentSplash
 
-interface TransactionAnimation {
+class ActivityFullscreen : BaseActivity() {
 
-    /**
-     * Gets the entering animation.
+    override fun layoutToInflate(): Int {
+        return R.layout.activity_fullscreen
+    }
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationEnter: Int
+    override fun getContainerViewId(): Int {
+        return R.id.frmContainer
+    }
 
-    /**
-     * Gets the exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationExit: Int
-
-    /**
-     * Gets the pop entering animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopEnter: Int
-
-    /**
-     * Gets the pop exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopExit: Int
+    override fun getDefaultFragment(): Class<out Fragment>? {
+        return FragmentSplash::class.java
+    }
 }

@@ -23,41 +23,15 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.massivedisaster.afm.animation
+package com.massivedisaster.afm.sample.activity
 
-import android.support.annotation.AnimRes
+import android.os.Bundle
 
-interface TransactionAnimation {
+class ActivityHome : ActivityToolbar() {
 
-    /**
-     * Gets the entering animation.
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationEnter: Int
-
-    /**
-     * Gets the exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationExit: Int
-
-    /**
-     * Gets the pop entering animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopEnter: Int
-
-    /**
-     * Gets the pop exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopExit: Int
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
 }

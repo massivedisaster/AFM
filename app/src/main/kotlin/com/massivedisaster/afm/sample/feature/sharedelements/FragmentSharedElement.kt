@@ -23,41 +23,33 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.massivedisaster.afm.animation
+package com.massivedisaster.afm.sample.feature.sharedelements
 
-import android.support.annotation.AnimRes
+import android.os.Bundle
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.massivedisaster.adal.fragment.BaseFragment
+import com.massivedisaster.afm.sample.R
 
-interface TransactionAnimation {
+class FragmentSharedElement : BaseFragment() {
 
-    /**
-     * Gets the entering animation.
+    private var mUrl: String? = null
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationEnter: Int
+    override fun layoutToInflate(): Int {
+        return R.layout.fragment_shared_element
+    }
 
-    /**
-     * Gets the exiting animation.
+    override fun getFromBundle(bundle: Bundle?) {
+        mUrl = bundle!!.getString("URL")
+    }
 
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationExit: Int
+    override fun doOnCreated() {
+        activity.setTitle(R.string.image_detail)
 
-    /**
-     * Gets the pop entering animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopEnter: Int
-
-    /**
-     * Gets the pop exiting animation.
-
-     * @return the animation.
-     */
-    @get:AnimRes
-    val animationPopExit: Int
+        Glide.with(context)
+                .load(mUrl)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .dontAnimate()
+                .into(findViewById(R.id.imgSharedElement))
+    }
 }
